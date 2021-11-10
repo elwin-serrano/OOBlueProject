@@ -1,0 +1,31 @@
+@startuml
+
+class HuoTaoShi
+
+hide circle
+hide empty members
+HuoTaoShi --> Player
+Player --> Elements
+Elements --> Score
+Score --> Player : "If life > 0"
+Score --> GameOver : "If life = 0"
+
+class Score{
+life()
+score()
+}
+class Player {
+life()
+}
+
+class Elements {
+earth, fire, water
+choice()
+time()
+}
+class GameOver{
+score()
+close()
+}
+
+@enduml
