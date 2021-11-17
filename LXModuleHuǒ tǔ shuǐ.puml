@@ -1,0 +1,40 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam class {
+BackgroundColor LightBlue
+ArrowColor Black
+BorderColor Black
+}
+skinparam stereotypeCBackgroundColor white
+skinparam shadowing false
+skinparam classFontStyle bold
+hide circle
+hide empty members
+Huǒtǔshuǐ  --> start
+start --> player
+player --> game : pick an element \n 30 secs to pick
+game --> Battle_system
+game --> player : loses hp when time limit reach
+Battle_system --> player : decrease hp if lose\n increase score if win
+player --> game_over :if the healthpoints is 0
+class game{
++fire
++earth
++water
+get_input()
+timer()
+}
+class Battle_system{
+fire > earth
+earth > water
+water > fire
+score()
+
+}
+class player{
+healthpoints()
+}
+class game_over{
+score()
+}
+@enduml

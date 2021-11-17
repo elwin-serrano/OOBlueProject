@@ -1,0 +1,25 @@
+@startuml
+actor "user" as x
+rectangle "Huǒ tǔ shuǐ"  {
+usecase "pick your element" as UC1
+usecase "win or lose the battle" as UC2
+usecase "go to the next round" as UC3
+usecase "Game Over" as UC4
+}
+(start) as y
+x --> y
+note right of y : the player starts with 3 lives
+y --> UC1
+note right of UC1 :earth, water or fire.\n30 seconds time limit
+UC1 --> UC2 : "if player reach time limit\n loses 1 life"
+UC2 --> UC3 : "if the player still has \nremaining life"
+UC2 --> UC4 : "If the player loses all life"
+UC3 --> UC1
+
+note "The score increases as the player wins" as N3
+UC3 .. N3
+note "Show final score" as n
+UC4 .. n
+note "The player a loses life every lose" as z
+UC2 .. z
+@enduml
