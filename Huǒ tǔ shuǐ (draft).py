@@ -1,5 +1,6 @@
 from random import randint
 from threading import Timer
+import sys
 
 list_choice = ["earth", "water", "fire"]
 
@@ -78,36 +79,31 @@ def main():
         print(f'{player.name} life {player.life}')
         main()
 
-    t = Timer(10, time)
+    t = Timer(3, time)
     run = True
+    t.start()
 
     while run:
-
         if player.life == 0:
             print("game over")
             print(f"final score: {game.score}")
-            break
+            t.cancel()
+            sys.exit()
 
         else:
-            t.start()
             run = game.get_input(input("Enter your pick:"), run)
-            t.close()
-
-
+            t.join()
 
             if run == True:
                 comp_choice = list_choice[randint(0, 2)]
                 print(f"The Computer chose: {comp_choice}")
                 game.check(comp_choice)
+                print("Your score is:", game.return_score())
+                print(f'{player.name} life {player.life}')
+                main()
 
             else:
                 run = True
-
-            print("Your score is:", game.return_score())
-            print(f'{player.name} life {player.life}')
-            main()
-
-
 
 
 if __name__ == "__main__":
