@@ -98,5 +98,5 @@ def main():
 
 
 if __name__ == "__main__":
-    x = str(input("press any key to continue: "))
+    x = str(input("press enter to continue: "))
     main()
